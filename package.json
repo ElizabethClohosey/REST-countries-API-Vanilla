@@ -1,0 +1,23 @@
+{
+  "name": "rest-country-api-vanilla",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElizabethClohosey/REST-countries-API-Vanilla.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElizabethClohosey/REST-countries-API-Vanilla/issues"
+  },
+  "homepage": "https://github.com/ElizabethClohosey/REST-countries-API-Vanilla#readme",
+  "dependencies": {
+    "bootstrap": "^4.5.0",
+    "sass": "^1.26.10"
+  }
+}
