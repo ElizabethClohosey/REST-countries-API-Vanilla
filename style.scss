@@ -1,5 +1,85 @@
 @import "./styles/variables";
 
-body {
-  background: $blacker;
+// body {
+//   background: $blacker;
+// }
+
+// structure
+.header-container,
+.main-container {
+  max-width: 90%;
+  margin: auto;
+}
+
+.dark-mode {
+  background: black;
+  color: white;
+}
+
+// =============
+// Header
+// =============
+
+header {
+  padding: 1rem 0;
+}
+
+#toggle-theme {
+  cursor: pointer;
+}
+
+//===============
+//Seach Section
+//===============
+
+.search-icon {
+  color: $lightModeInput;
+  font-size: 25px;
+  position: absolute;
+  // margin-left: .5rem;
+  left: 40px;
+  top: 20px;
+}
+
+input {
+  border: none;
+  border-radius: 0.25rem;
+  width: 80%;
+  padding: 0.75rem 4rem;
+  background: $white;
+  box-shadow: 0 0 5px $lightModeInput;
+  // color: $lightModeInput;
+
+  &::placeholder {
+    color: $lightModeInput;
+  }
+}
+
+select {
+  padding: 0.75rem 1rem;
+  width: 60%;
+  border: none;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 5px $lightModeInput;
+  // color: $lightModeInput;
+}
+
+//===============
+//Search Results
+//===============
+.country-info {
+  border: 3px solid red;
+
+  img {
+    padding: 3rem 5rem;
+  }
+
+  .info-body {
+    width: 80%;
+    margin: 1rem auto 1rem;
+
+    p {
+      margin: 0;
+    }
+  }
 }

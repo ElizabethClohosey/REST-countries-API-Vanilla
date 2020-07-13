@@ -6,12 +6,98 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>REST Country API</title>
 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="dist/css/style.css">
 </head>
 
 <body>
 
+  <header>
+    <div class="header-container">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-lg-5">
+          <h1>Where in the world</h1>
+        </div>
+        <div id="toggle-theme" class="col-lg-2 d-flex">
+          <ion-icon class="my-auto ml-auto mr-2" name="moon-outline"></ion-icon>
+          <p class="my-auto">Dark Mode</p>
+        </div>
+      </div>
+    </div>
+  </header>
 
+  <main class="main-container">
+    <section class="search-section">
+      <div class="action-container">
+        <div class="row justify-content-between mt-5">
+          <div class="col-lg-6">
+            <ion-icon class="search-icon" name="search"></ion-icon>
+            <input type="text" placeholder="Search for a Country..."></input>
+          </div>
+          <div class="col-lg-4 text-right">
+            <select class="countires">
+              <option value="">Filter By Region</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="search-results">
+      <div class="search-results-container">
+        <div class="row mt-5">
+          <div class="col-lg-3">
+            <div class="country-info">
+              <img class="flag-img" src="..." alt="#">
+              <div class="info-body">
+                <h5 class="country-name">Country Name</h5>
+                <p class="card-text">Population:</p>
+                <p class="card-text">Region:</p>
+                <p class="card-text">Capital:</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="country-info">
+              <img class="flag-img" src="..." alt="#">
+              <div class="info-body">
+                <h5 class="country-name">Country Name</h5>
+                <p class="card-text">Population:</p>
+                <p class="card-text">Region:</p>
+                <p class="card-text">Capital:</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="country-info">
+              <img class="flag-img" src="..." alt="#">
+              <div class="info-body">
+                <h5 class="country-name">Country Name</h5>
+                <p class="card-text">Population:</p>
+                <p class="card-text">Region:</p>
+                <p class="card-text">Capital:</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="country-info">
+              <img class="flag-img" src="..." alt="#">
+              <div class="info-body">
+                <h5 class="country-name">Country Name</h5>
+                <p class="card-text">Population:</p>
+                <p class="card-text">Region:</p>
+                <p class="card-text">Capital:</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 
   <script src="main.js"></script>
 
