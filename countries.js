@@ -1,4 +1,3 @@
-console.log("Countries is linked");
 
 // Building search results section structure
 let resultsSection = document.querySelector(".search-results");
@@ -14,8 +13,8 @@ resultsContainer.appendChild(resultsRow);
 // Global Variables
 let countries;
 // let regions;
-let countriesList = document.querySelector("#searched-country");
 let regionList = document.querySelector("#region");
+let countriesList = document.querySelector("#searched-country");
 
 // Searching by region
 regionList.addEventListener("change", (event) => {
@@ -34,55 +33,21 @@ regionList.addEventListener("change", (event) => {
     .then((data) => displayRegionInfo(data)) // Displaying search results
     .catch((err) => console.log("ERROR", err));
 
-
-
   // Function to display region search results
   const displayRegionInfo = (countryData) => {
-    console.log(
-      "This is the country data when seraching by region",
-      countryData
-    );
-
     countries = countryData;
 
     countries.forEach((country) => {
-      document.querySelector(".search-results").empty;
+      // document.querySelector(".search-results").empty;
       // Adding to search results section
-      let resultsCols = document.createElement("div");
-      resultsCols.setAttribute("class", "col-lg-3 mb-2");
-      resultsRow.appendChild(resultsCols);
-
-      let countryInfo = document.createElement("div");
-      countryInfo.setAttribute("class", "country-info");
-      resultsCols.appendChild(countryInfo);
-
-      let flagImg = document.createElement("img");
-      flagImg.setAttribute("src", country.flag);
-      flagImg.setAttribute("alt", `"Flag for ${country.name}`);
-      countryInfo.appendChild(flagImg);
-
-      let countryInfoBody = document.createElement("div");
-      countryInfoBody.setAttribute("class", "info-body");
-      countryInfo.appendChild(countryInfoBody);
-
-      let countryName = document.createElement("h5");
-      countryInfoBody.appendChild(countryName);
-      countryName.innerHTML = country.name;
-
-      let population = document.createElement("p");
-      countryInfoBody.appendChild(population);
-      population.innerHTML = `Population:
-      ${country.population.toLocaleString("en-US")}`;
-
-      let region = document.createElement("p");
-      countryInfoBody.appendChild(region);
-      region.innerHTML = `Region:
-      ${country.region}`;
-
-      let capital = document.createElement("p");
-      countryInfoBody.appendChild(capital);
-      capital.innerHTML = `Capital:
-      ${country.capital}`;
+      let resultsCols = createCols();
+      let countryInfo = createInfoDiv(resultsCols);
+      getFlagImg(country, countryInfo);
+      let countryInfoBody = createInfoBody(countryInfo);
+      getName(countryInfoBody, country);
+      getPopulation(countryInfoBody, country);
+      getRegion(countryInfoBody, country);
+      getCapital(countryInfoBody, country);
     });
   };
 });
@@ -95,76 +60,79 @@ countriesList.addEventListener("change", (event) => {
     `https://restcountries.eu/rest/v2/name/${searchedCountry}?fullText=true`
   )
     .then((res) => res.json())
-    .then((data) => initialize(data))
-    .catch((err) => console.log("ERROR", err));
+    .then((data) => displayCountryInfo(data)) // Displaying search results
+    .catch((err) => {
+      console.log("ERROR", err);
+      // alert("Please enter a valid country name");
+    });
 
-  const initialize = (countryData) => {
-    console.log("This is the region data", countryData);
-  };
+  const displayCountryInfo = (countryData) => {
+    countries = countryData;
 
-  const displayCountryInfo = () => {
-    console.log(
-      "This will be the info that is returned when user searches by country"
-    );
+    countries.forEach((country) => {
+      let resultsCols = createCols();
+      let countryInfo = createInfoDiv(resultsCols);
+      getFlagImg(country, countryInfo);
+      let countryInfoBody = createInfoBody(countryInfo);
+      getName(countryInfoBody, country);
+      getPopulation(countryInfoBody, country);
+      getRegion(countryInfoBody, country);
+      getCapital(countryInfoBody, country);
+    });
   };
 });
 
-// const displayCountryInfo = (countryByAlpha3Code) => {
-//   const countryData = countries.find(
-//     (country) => country.alpha3Code === countryByAlpha3Code
-//   );
-//   console.log("WHAT IS THIS?!?!", countryData);
-//   document.querySelector(".flag-img").src = countryData.flag;
-//   document.querySelector(
-//     ".flag-img"
-//   ).alt = `Flag of ${countryData.name}`;
-//   document.querySelector(".capital").innerHTML = countryData.capital;
-//   document.querySelector(
-//     ".dialing-code"
-//   ).innerHTML = `+${countryData.callingCodes[0]}`;
-//   document.querySelector(
-//     ".population"
-//   ).innerHTML = countryData.population.toLocaleString("en-US");
-//   document.querySelector(
-//     ".currencies"
-//   ).innerHTML = countryData.currencies
-//     .filter((currency) => currency.name)
-//     .map((currency) => ` ${currency.name} ${currency.code}`);
-//   document.querySelector(".region").innerHTML = countryData.region;
-//   document.querySelector(".subregion").innerHTML = countryData.subregion;
-// };
+function createCols() {
+  let resultsCols = document.createElement("div");
+  resultsCols.setAttribute("class", "col-lg-3 mb-2");
+  resultsRow.appendChild(resultsCols);
+  return resultsCols;
+}
 
-// const displayRegionInfo = (countryData) => {
-//   console.log(
-//     "This is the country data when seraching by region",
-//     countryData
-//   );
-//   // console.log(
-//   //   "This will be the info that is returned when user searches by region"
-//   // );
-//   countries = countryData;
+function createInfoDiv(resultsCols) {
+  let countryInfo = document.createElement("div");
+  countryInfo.setAttribute("class", "country-info");
+  resultsCols.appendChild(countryInfo);
+  return countryInfo;
+}
 
-//   countries.forEach((country) => {
-//     document.querySelector(".flag-img").src = country.flag;
-//     document.querySelector(".flag-img").alt = `Flag of ${country.name}`;
-//     // let resultsDiv = document.getElementsByClassName("country-info");
+function createInfoBody(countryInfo) {
+  let countryInfoBody = document.createElement("div");
+  countryInfoBody.setAttribute("class", "info-body");
+  countryInfo.appendChild(countryInfoBody);
+  return countryInfoBody;
+}
 
-//     // img.src = country.flag;
-//     // console.log("country flag url", country.flag);
+function getFlagImg(country, countryInfo) {
+  let flagImg = document.createElement("img");
+  flagImg.setAttribute("src", country.flag);
+  flagImg.setAttribute("alt", `"Flag for ${country.name}`);
+  countryInfo.appendChild(flagImg);
+}
 
-//     // let resultsDiv = document.createElement("div");
-//     // resultsDiv.setAttribute("class", "results-div");
-//     // document.querySelector(".results").appendChild(resultsDiv);
-//     // document.querySelector(".flag-img");
+function getName(countryInfoBody, country) {
+  let countryName = document.createElement("h5");
+  countryInfoBody.appendChild(countryName);
+  countryName.innerHTML = country.name;
+}
 
-//     // let flagImg = document.createElement("img");
-//     // flagImg.setAttribute("src", country.flag);
-//     // document.querySelector(".results-div").appendChild(flagImg);
+function getPopulation(countryInfoBody, country) {
+  let population = document.createElement("p");
+  countryInfoBody.appendChild(population);
+  population.innerHTML = `Population:
+      ${country.population.toLocaleString("en-US")}`;
+}
 
-//     console.log("Name:", country.name);
-//     console.log("Population", country.population.toLocaleString("en-US"));
-//     console.log("Region", country.region);
-//     console.log("Capital", country.capital);
-//   });
-// };
-// });
+function getRegion(countryInfoBody, country) {
+  let region = document.createElement("p");
+  countryInfoBody.appendChild(region);
+  region.innerHTML = `Region:
+      ${country.region}`;
+}
+
+function getCapital(countryInfoBody, country) {
+  let capital = document.createElement("p");
+  countryInfoBody.appendChild(capital);
+  capital.innerHTML = `Capital:
+      ${country.capital}`;
+}
