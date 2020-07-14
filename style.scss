@@ -71,7 +71,8 @@ select {
   border: 3px solid red;
 
   img {
-    padding: 3rem 5rem;
+    max-height: 200px;
+    width: 100%;
   }
 
   .info-body {

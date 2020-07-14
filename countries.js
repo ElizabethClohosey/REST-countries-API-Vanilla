@@ -1,11 +1,19 @@
 console.log("Countries is linked");
 
-// let chosenRegion = document.querySelector(".region");
-// console.log("Chosen Region", chosenRegion.value);
-// let searchedCountry = document.getElementById("searched-country");
-// console.log("Searched Value", searchedCountry.value);
+// adding to DOM structure
+
+let resultsSection = document.querySelector(".search-results");
+
+let resultsContainer = document.createElement("div");
+resultsContainer.setAttribute("class", "results-container");
+resultsSection.appendChild(resultsContainer);
+
+let resultsRow = document.createElement("div");
+resultsRow.setAttribute("class", "row mt-5");
+resultsContainer.appendChild(resultsRow);
 
 let countries;
+let regions;
 let countriesList = document.querySelector("#searched-country");
 let regionList = document.querySelector("#region");
 
@@ -19,26 +27,44 @@ regionList.addEventListener("change", (event) => {
     `https://restcountries.eu/rest/v2/region/${chosenRegion}`
   )
     .then((res) => res.json())
-    .then((data) => initialize(data))
+    // .then((data) => initialize(data))
+    .then((data) => displayRegionInfo(data))
     .catch((err) => console.log("ERROR", err));
 
   const initialize = (regionData) => {
     console.log("This is the region data", regionData);
+  };
 
-    // I might not need this function - will possibly only use displayCountryInfo function
+  const displayRegionInfo = (countryData) => {
+    console.log(
+      "This is the country data when seraching by region",
+      countryData
+    );
+    // console.log(
+    //   "This will be the info that is returned when user searches by region"
+    // );
+    countries = countryData;
 
-    // region = regionData;
+    countries.forEach((country) => {
+      let resultsCols = document.createElement("div");
+      resultsCols.setAttribute("class", "col-lg-3 mb-2");
+      resultsRow.appendChild(resultsCols);
 
-    // console.log("this should be each region", region);
-    // let options = "";
+      let countryInfo = document.createElement("div");
+      countryInfo.setAttribute("class", "country-info");
+      resultsCols.appendChild(countryInfo);
+      // document.querySelector(".flag-img").src = country.flag;
+      // document.querySelector(".flag-img").alt = `Flag of ${country.name}`;
 
-    // countries.forEach((country) => {
-    //   options += `<option value="${country.alpha3Code}">${country.region}</option>`;
-    // });
+      // let flagImg = document.createElement("img");
+      // flagImg.setAttribute("src", country.flag);
+      // document.querySelector(".results-div").appendChild(flagImg);
 
-    // countriesList.innerHTML = options;
-
-    // displayCountryInfo("AFG");
+      console.log("Name:", country.name);
+      console.log("Population", country.population.toLocaleString("en-US"));
+      console.log("Region", country.region);
+      console.log("Capital", country.capital);
+    });
   };
 });
 
@@ -56,6 +82,12 @@ countriesList.addEventListener("change", (event) => {
   const initialize = (countryData) => {
     console.log("This is the region data", countryData);
   };
+
+  const displayCountryInfo = () => {
+    console.log(
+      "This will be the info that is returned when user searches by country"
+    );
+  };
 });
 
 // const displayCountryInfo = (countryByAlpha3Code) => {
@@ -63,9 +95,9 @@ countriesList.addEventListener("change", (event) => {
 //     (country) => country.alpha3Code === countryByAlpha3Code
 //   );
 //   console.log("WHAT IS THIS?!?!", countryData);
-//   document.querySelector(".flag-container img").src = countryData.flag;
+//   document.querySelector(".flag-img").src = countryData.flag;
 //   document.querySelector(
-//     ".flag-container img"
+//     ".flag-img"
 //   ).alt = `Flag of ${countryData.name}`;
 //   document.querySelector(".capital").innerHTML = countryData.capital;
 //   document.querySelector(
@@ -82,3 +114,38 @@ countriesList.addEventListener("change", (event) => {
 //   document.querySelector(".region").innerHTML = countryData.region;
 //   document.querySelector(".subregion").innerHTML = countryData.subregion;
 // };
+
+// const displayRegionInfo = (countryData) => {
+//   console.log(
+//     "This is the country data when seraching by region",
+//     countryData
+//   );
+//   // console.log(
+//   //   "This will be the info that is returned when user searches by region"
+//   // );
+//   countries = countryData;
+
+//   countries.forEach((country) => {
+//     document.querySelector(".flag-img").src = country.flag;
+//     document.querySelector(".flag-img").alt = `Flag of ${country.name}`;
+//     // let resultsDiv = document.getElementsByClassName("country-info");
+
+//     // img.src = country.flag;
+//     // console.log("country flag url", country.flag);
+
+//     // let resultsDiv = document.createElement("div");
+//     // resultsDiv.setAttribute("class", "results-div");
+//     // document.querySelector(".results").appendChild(resultsDiv);
+//     // document.querySelector(".flag-img");
+
+//     // let flagImg = document.createElement("img");
+//     // flagImg.setAttribute("src", country.flag);
+//     // document.querySelector(".results-div").appendChild(flagImg);
+
+//     console.log("Name:", country.name);
+//     console.log("Population", country.population.toLocaleString("en-US"));
+//     console.log("Region", country.region);
+//     console.log("Capital", country.capital);
+//   });
+// };
+// });
