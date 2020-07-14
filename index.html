@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="dist/css/style.css">
+
+
+  <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
 </head>
 
 <body>
@@ -33,11 +36,16 @@
         <div class="row justify-content-between mt-5">
           <div class="col-lg-6">
             <ion-icon class="search-icon" name="search"></ion-icon>
-            <input type="text" placeholder="Search for a Country..."></input>
+            <input id="searched-country" type="text" placeholder="Search for a Country..."></input>
           </div>
           <div class="col-lg-4 text-right">
-            <select class="countires">
+            <select id="region">
               <option value="">Filter By Region</option>
+              <option value="africa">Africa</option>
+              <option value="americas">Americas</option>
+              <option value="asia">Asia</option>
+              <option value="europe">Europe</option>
+              <option value="oceania">Oceania</option>
             </select>
           </div>
         </div>
@@ -50,7 +58,7 @@
         <div class="row mt-5">
           <div class="col-lg-3">
             <div class="country-info">
-              <img class="flag-img" src="..." alt="#">
+              <img class="flag-img" src="" alt="#">
               <div class="info-body">
                 <h5 class="country-name">Country Name</h5>
                 <p class="card-text">Population:</p>
@@ -61,7 +69,7 @@
           </div>
           <div class="col-lg-3">
             <div class="country-info">
-              <img class="flag-img" src="..." alt="#">
+              <img class="flag-img" src="" alt="#">
               <div class="info-body">
                 <h5 class="country-name">Country Name</h5>
                 <p class="card-text">Population:</p>
@@ -72,7 +80,7 @@
           </div>
           <div class="col-lg-3">
             <div class="country-info">
-              <img class="flag-img" src="..." alt="#">
+              <img class="flag-img" src="" alt="#">
               <div class="info-body">
                 <h5 class="country-name">Country Name</h5>
                 <p class="card-text">Population:</p>
@@ -83,7 +91,7 @@
           </div>
           <div class="col-lg-3">
             <div class="country-info">
-              <img class="flag-img" src="..." alt="#">
+              <img class="flag-img" src="" alt="#">
               <div class="info-body">
                 <h5 class="country-name">Country Name</h5>
                 <p class="card-text">Population:</p>
@@ -97,9 +105,11 @@
     </section>
   </main>
 
-  <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+  <!-- <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script> -->
 
-  <script src="main.js"></script>
+  <script src="dark-mode.js"></script>
+
+  <script src="countries.js"></script>
 
 </body>
 
