@@ -1,7 +1,6 @@
 console.log("Countries is linked");
 
-// adding to DOM structure
-
+// Building search results section structure
 let resultsSection = document.querySelector(".search-results");
 
 let resultsContainer = document.createElement("div");
@@ -9,43 +8,46 @@ resultsContainer.setAttribute("class", "results-container");
 resultsSection.appendChild(resultsContainer);
 
 let resultsRow = document.createElement("div");
-resultsRow.setAttribute("class", "row mt-5");
+resultsRow.setAttribute("class", "row mt-5 results-row");
 resultsContainer.appendChild(resultsRow);
 
+// Global Variables
 let countries;
-let regions;
+// let regions;
 let countriesList = document.querySelector("#searched-country");
 let regionList = document.querySelector("#region");
 
 // Searching by region
 regionList.addEventListener("change", (event) => {
   // displayCountryInfo(event.target.value);
+
+  // Getting value from the region select menu
   let chosenRegion = event.target.value;
   console.log("This will be the value of the region select", chosenRegion);
 
+  // fetching the REST countries API for each chosen region
   const getRegionData = fetch(
     `https://restcountries.eu/rest/v2/region/${chosenRegion}`
   )
     .then((res) => res.json())
     // .then((data) => initialize(data))
-    .then((data) => displayRegionInfo(data))
+    .then((data) => displayRegionInfo(data)) // Displaying search results
     .catch((err) => console.log("ERROR", err));
 
-  const initialize = (regionData) => {
-    console.log("This is the region data", regionData);
-  };
 
+
+  // Function to display region search results
   const displayRegionInfo = (countryData) => {
     console.log(
       "This is the country data when seraching by region",
       countryData
     );
-    // console.log(
-    //   "This will be the info that is returned when user searches by region"
-    // );
+
     countries = countryData;
 
     countries.forEach((country) => {
+      document.querySelector(".search-results").empty;
+      // Adding to search results section
       let resultsCols = document.createElement("div");
       resultsCols.setAttribute("class", "col-lg-3 mb-2");
       resultsRow.appendChild(resultsCols);
@@ -53,17 +55,34 @@ regionList.addEventListener("change", (event) => {
       let countryInfo = document.createElement("div");
       countryInfo.setAttribute("class", "country-info");
       resultsCols.appendChild(countryInfo);
-      // document.querySelector(".flag-img").src = country.flag;
-      // document.querySelector(".flag-img").alt = `Flag of ${country.name}`;
 
-      // let flagImg = document.createElement("img");
-      // flagImg.setAttribute("src", country.flag);
-      // document.querySelector(".results-div").appendChild(flagImg);
+      let flagImg = document.createElement("img");
+      flagImg.setAttribute("src", country.flag);
+      flagImg.setAttribute("alt", `"Flag for ${country.name}`);
+      countryInfo.appendChild(flagImg);
 
-      console.log("Name:", country.name);
-      console.log("Population", country.population.toLocaleString("en-US"));
-      console.log("Region", country.region);
-      console.log("Capital", country.capital);
+      let countryInfoBody = document.createElement("div");
+      countryInfoBody.setAttribute("class", "info-body");
+      countryInfo.appendChild(countryInfoBody);
+
+      let countryName = document.createElement("h5");
+      countryInfoBody.appendChild(countryName);
+      countryName.innerHTML = country.name;
+
+      let population = document.createElement("p");
+      countryInfoBody.appendChild(population);
+      population.innerHTML = `Population:
+      ${country.population.toLocaleString("en-US")}`;
+
+      let region = document.createElement("p");
+      countryInfoBody.appendChild(region);
+      region.innerHTML = `Region:
+      ${country.region}`;
+
+      let capital = document.createElement("p");
+      countryInfoBody.appendChild(capital);
+      capital.innerHTML = `Capital:
+      ${country.capital}`;
     });
   };
 });

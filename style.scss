@@ -1,8 +1,8 @@
 @import "./styles/variables";
 
-// body {
-//   background: $blacker;
-// }
+body {
+  background: $lightModeBg;
+}
 
 // structure
 .header-container,
@@ -67,10 +67,20 @@ select {
 //===============
 //Search Results
 //===============
+
+// .results-row {
+//   height: auto;
+// }
+
 .country-info {
-  border: 3px solid red;
+  // border: 3px solid red;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 5px $lightModeInput;
 
   img {
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    min-height: 200px;
     max-height: 200px;
     width: 100%;
   }
