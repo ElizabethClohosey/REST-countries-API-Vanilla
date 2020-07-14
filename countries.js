@@ -47,7 +47,7 @@ countriesList.addEventListener("change", (event) => {
   console.log("This will be the value of the input", searchedCountry);
 
   const getCountryData = fetch(
-    `https://restcountries.eu/rest/v2/name/${{ searchedCountry }}?fullText=true`
+    `https://restcountries.eu/rest/v2/name/${searchedCountry}?fullText=true`
   )
     .then((res) => res.json())
     .then((data) => initialize(data))
