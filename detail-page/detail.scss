@@ -1,0 +1,13 @@
+@import "../styles/variables";
+
+// body {
+//   background: red;
+// }
+
+button {
+  border: none;
+  border-radius: 0.25rem;
+  background: $white;
+  box-shadow: 0 0 5px $lightModeInput;
+  padding: 0.25rem 1.5rem;
+}

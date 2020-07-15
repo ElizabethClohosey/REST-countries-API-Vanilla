@@ -36,7 +36,7 @@ input {
   padding: 0.75rem 4rem;
   background: white;
   -webkit-box-shadow: 0 0 5px #858585;
-          box-shadow: 0 0 5px #858585;
+  box-shadow: 0 0 5px #858585;
 }
 
 input::-webkit-input-placeholder {
@@ -61,7 +61,7 @@ select {
   border: none;
   border-radius: 0.25rem;
   -webkit-box-shadow: 0 0 5px #858585;
-          box-shadow: 0 0 5px #858585;
+  box-shadow: 0 0 5px #858585;
 }
 
 .input-search-results {
@@ -77,7 +77,7 @@ select {
 .country-info {
   border-radius: 0.5rem;
   -webkit-box-shadow: 0 0 5px #858585;
-          box-shadow: 0 0 5px #858585;
+  box-shadow: 0 0 5px #858585;
 }
 
 .country-info img {

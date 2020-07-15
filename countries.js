@@ -1,28 +1,25 @@
-
 // Building search results section structure
 let resultsSection = document.querySelector(".search-results");
 
+// Adding container where results will populate to DOM
 let resultsContainer = document.createElement("div");
 resultsContainer.setAttribute("class", "results-container");
 resultsSection.appendChild(resultsContainer);
 
+// Adding row to results container for cols to populate
 let resultsRow = document.createElement("div");
 resultsRow.setAttribute("class", "row mt-5 results-row");
 resultsContainer.appendChild(resultsRow);
 
 // Global Variables
 let countries;
-// let regions;
 let regionList = document.querySelector("#region");
 let countriesList = document.querySelector("#searched-country");
 
 // Searching by region
 regionList.addEventListener("change", (event) => {
-  // displayCountryInfo(event.target.value);
-
   // Getting value from the region select menu
   let chosenRegion = event.target.value;
-  console.log("This will be the value of the region select", chosenRegion);
 
   // fetching the REST countries API for each chosen region
   const getRegionData = fetch(
@@ -85,6 +82,7 @@ countriesList.addEventListener("change", (event) => {
 function createCols() {
   let resultsCols = document.createElement("div");
   resultsCols.setAttribute("class", "col-lg-3 mb-2");
+  // resultsCols.setAttribute(`value ${country.name}`);
   resultsRow.appendChild(resultsCols);
   return resultsCols;
 }
