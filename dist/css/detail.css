@@ -1,3 +1,10 @@
+.dark-mode button {
+  background: #2b3945;
+  color: white;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 button {
   border: none;
   border-radius: 0.25rem;
@@ -5,4 +12,14 @@ button {
   -webkit-box-shadow: 0 0 5px #858585;
           box-shadow: 0 0 5px #858585;
   padding: 0.25rem 1.5rem;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+button ion-icon {
+  margin-right: 0.5rem;
 }

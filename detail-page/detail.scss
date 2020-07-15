@@ -3,6 +3,13 @@
 // body {
 //   background: red;
 // }
+.dark-mode {
+  button {
+    background: $darkModeElements;
+    color: white;
+    box-shadow: none;
+  }
+}
 
 button {
   border: none;
@@ -10,4 +17,10 @@ button {
   background: $white;
   box-shadow: 0 0 5px $lightModeInput;
   padding: 0.25rem 1.5rem;
+  display: inline-flex;
+  align-items: center;
+
+  ion-icon {
+    margin-right: 0.5rem;
+  }
 }

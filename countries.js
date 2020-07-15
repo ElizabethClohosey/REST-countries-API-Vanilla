@@ -1,3 +1,5 @@
+console.log("countries.js is connected");
+
 // Building search results section structure
 let resultsSection = document.querySelector(".search-results");
 
@@ -65,6 +67,8 @@ function handleCountrySelection(countryInfo) {
     countryInfo.addEventListener("click", (event) => {
       console.log("Country Info was clicked!!");
       window.location.href = "detail-page/detail.html";
+      // createResultsContainer();
+      // createResultsRow();
     });
   } else {
     console.log("Nope, it didn't work");
@@ -161,20 +165,13 @@ const displayCountryInfo = (countryData) => {
     getCapital(countryInfoBody, country);
 
     handleCountrySelection(countryInfo);
-
-    // if (countryDetail === true) {
-    //   let details = document.getElementsByClassName("country-info");
-    //   console.log("It worked!");
-
-    //   // details = document.getElementsByClassName("country-info");
-    //   details.addEventListener("click", (event) => {
-    //     console.log("Country Info was clicked!!");
-    //   });
-    // } else {
-    //   console.log("Nope, it didn't work");
-    // }
-    // // resultsCols.addEventListener("click", (event) => {
-    // //   console.log("Country Info was clicked!!");
-    // // });
   });
 };
+
+function createDetailCols() {
+  let resultsCols = document.createElement("div");
+  resultsCols.setAttribute("class", "col-6");
+  // resultsCols.setAttribute(`value ${country.name}`);
+  resultsRow.appendChild(resultsCols);
+  return resultsCols;
+}

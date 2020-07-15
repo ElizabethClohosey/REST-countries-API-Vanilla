@@ -2,6 +2,7 @@
 
 body {
   background: $lightModeBg;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 // structure
@@ -11,17 +12,20 @@ body {
   margin: auto;
 }
 
-.dark-mode {
-  background: black;
-  color: white;
-}
-
 // =============
 // Header
 // =============
 
 header {
   padding: 1rem 0;
+  background: $white;
+  box-shadow: 0 0 5px $lightModeInput;
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0;
+  }
 }
 
 #toggle-theme {
@@ -38,7 +42,8 @@ header {
   position: absolute;
   // margin-left: .5rem;
   left: 40px;
-  top: 20px;
+  // top: 18px;
+  top: 0.85rem;
 }
 
 input {
@@ -62,6 +67,13 @@ select {
   border-radius: 0.25rem;
   box-shadow: 0 0 5px $lightModeInput;
   // color: $lightModeInput;
+  appearance: none;
+}
+
+.chevron-down {
+  position: absolute;
+  right: 30px;
+  top: 1rem;
 }
 
 //===============
@@ -98,9 +110,56 @@ select {
   .info-body {
     width: 80%;
     margin: 1rem auto 1rem;
+    padding-bottom: 1rem;
+
+    h5 {
+      font-size: 1rem;
+      font-weight: 800;
+    }
 
     p {
       margin: 0;
+      font-size: 0.75rem;
+
+      .dark-mode {
+        color: $white;
+      }
     }
+  }
+}
+
+// =================
+// Dark Mode Style
+// =================
+
+.dark-mode {
+  // body {
+  background: $darkModeBg;
+  color: $white;
+  // }
+
+  header {
+    background: $darkModeElements;
+    color: white;
+    box-shadow: none;
+  }
+
+  .moon-icon {
+    color: white;
+  }
+
+  // section {
+  //   background: $darkModeBg;
+  // }
+  input,
+  select,
+  .country-info {
+    background: $darkModeElements;
+    color: $white;
+    box-shadow: none;
+  }
+
+  select {
+    margin-bottom: 2rem;
   }
 }
