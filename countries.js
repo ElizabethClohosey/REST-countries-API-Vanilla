@@ -52,7 +52,7 @@ countriesList.addEventListener("change", (event) => {
     });
 });
 
-function handleCountrySelection(countryInfo) {
+function handleCountrySelection(countryInfo, code) {
   // let details = document.querySelector(".country-info");
   details = document.querySelector(".country-info");
 
@@ -66,7 +66,7 @@ function handleCountrySelection(countryInfo) {
 
     countryInfo.addEventListener("click", (event) => {
       console.log("Country Info was clicked!!");
-      window.location.href = "detail-page/detail.html";
+      window.location.href = "detail-page/detail.html?code="+code;
       // createResultsContainer();
       // createResultsRow();
     });
@@ -152,6 +152,7 @@ function getCapital(countryInfoBody, country) {
 
 const displayCountryInfo = (countryData) => {
   countries = countryData;
+  console.log(countryData)
 
   countries.forEach((country) => {
     // Adding to search results section
@@ -164,7 +165,7 @@ const displayCountryInfo = (countryData) => {
     getRegion(countryInfoBody, country);
     getCapital(countryInfoBody, country);
 
-    handleCountrySelection(countryInfo);
+    handleCountrySelection(countryInfo, country.alpha3Code);
   });
 };
 
